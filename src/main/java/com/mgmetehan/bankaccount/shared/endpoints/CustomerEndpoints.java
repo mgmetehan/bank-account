@@ -1,4 +1,4 @@
-package com.mgmetehan.bankaccount.shared.model.endpoints;
+package com.mgmetehan.bankaccount.shared.endpoints;
 
 import com.mgmetehan.bankaccount.core.endpoints.BaseEndpoints;
 import lombok.experimental.UtilityClass;
