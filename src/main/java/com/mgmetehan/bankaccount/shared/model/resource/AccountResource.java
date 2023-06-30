@@ -15,6 +15,6 @@ public class AccountResource {
     private String id;
     private BigDecimal balance;
     private LocalDateTime creationDate;
-    private AccountOwnerResource customer;
+    private AccountOwnerCustomerResource customer;
     private Set<TransactionResource> transactions;
 }

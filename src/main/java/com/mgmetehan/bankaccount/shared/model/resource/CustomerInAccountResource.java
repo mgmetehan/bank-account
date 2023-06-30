@@ -11,7 +11,7 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-public class CustomerOwnedAccountResource {
+public class CustomerInAccountResource {
     private String id;
     private BigDecimal balance = BigDecimal.ZERO;
     private Set<TransactionResource> transactions;

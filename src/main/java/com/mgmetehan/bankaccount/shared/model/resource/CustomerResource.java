@@ -13,5 +13,5 @@ public class CustomerResource {
     private String id;
     private String name;
     private String surname;
-    private Set<CustomerOwnedAccountResource> accounts;
+    private Set<CustomerInAccountResource> accounts;
 }
