@@ -5,4 +5,6 @@ import com.mgmetehan.bankaccount.shared.model.resource.AccountResource;
 
 public interface AccountService {
     AccountResource save(AccountDto request);
+
+    AccountResource getAccount(String id);
 }

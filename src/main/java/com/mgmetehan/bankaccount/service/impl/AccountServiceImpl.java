@@ -1,5 +1,7 @@
 package com.mgmetehan.bankaccount.service.impl;
 
+import com.mgmetehan.bankaccount.converter.AccountConverter;
+import com.mgmetehan.bankaccount.model.Account;
 import com.mgmetehan.bankaccount.model.Transaction;
 import com.mgmetehan.bankaccount.repository.AccountRepository;
 import com.mgmetehan.bankaccount.service.AccountService;
@@ -19,12 +21,13 @@ import java.math.BigDecimal;
 public class AccountServiceImpl implements AccountService {
     private final AccountRepository accountRepository;
     private final CustomerService customerService;
+    private final AccountConverter accountConverter;
 
     @Override
     public AccountResource save(AccountDto request) {
         var customer = customerService.findCustomerById(request.getCustomerId());
 
-        com.mgmetehan.bankaccount.model.Account account = com.mgmetehan.bankaccount.model.Account.builder()
+        var account = Account.builder()
                 .customer(customer)
                 .balance(request.getInitialCredit())
                 .localDateTime(DateUtil.getCurrentLocalDateTime())
@@ -39,8 +42,13 @@ public class AccountServiceImpl implements AccountService {
 
             account.getTransaction().add(transaction);
         }
+        return accountConverter.toResource(accountRepository.save(account));
+    }
 
-
+    @Override
+    public AccountResource getAccount(String id) {
+        var account = accountRepository.findById(id).orElseThrow(() -> new RuntimeException("Account not found"));
         return null;
+
     }
 }
